@@ -37,7 +37,9 @@ const Note = ({ item, id, setNotes }) => {
       updateNote(id, setNotes, editValue, setEditValue);
       setShowSave(!showSave);
     } else {
-      alert("Please Enter Both Fields!");
+      toast.warning("Please Enter Both Fields !", {
+        autoClose: 1000,
+      });
     }
   };
 

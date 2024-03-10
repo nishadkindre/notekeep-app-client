@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div className="App" data-theme={isDark ? "dark" : "light"}>
       <div>
-        <ToastContainer />
+        <ToastContainer position="top-center" />
         <MemoizedHeader
           isDark={isDark}
           setIsDark={setIsDark}
