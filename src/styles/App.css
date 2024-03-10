@@ -1,0 +1,58 @@
+[data-theme="light"] {
+    --body-bg: #f7f7f7;
+    --body-img: url("../../public/bg-light-webp.webp");
+    --header-bg: #ffd22f;
+    --header-bs: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    --notes-bg: #fff;
+    --primary-color: #fff;
+    --text-color: black;
+    --icon-color: #ffd22f;
+    --icon-hover-bg: #cd9b12;
+    --save-btn-bg: #4e4efb;
+    --mode-bg: #ffde65;
+    --form-s: 0 1px 5px #8a8989;
+    --note-s: 0 2px 5px #ccc;
+    --add-btn-s: 0 1px 3px #0000004d;
+}
+
+[data-theme="dark"] {
+    --body-bg: #0b090a;
+    --body-img: url("../../public/bg-dark-webp.webp");
+    --header-bg: #181818;
+    --header-bs: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    --notes-bg: #202020;
+    --primary-color: #fff;
+    --text-color: white;
+    --icon-color: #b2bcaa;
+    --icon-hover-bg: #838e83;
+    --save-btn-bg: #4e4efb;
+    --mode-bg: #292929;
+    --form-s: 0 1px 5px #131313;
+    --note-s: 0 2px 5px #131313;
+    --add-btn-s: 0 1px 3px #00000009;
+}
+
+.App {
+    background-color: var(--body-bg);
+    background: var(--body-img);
+    height: 100vh;
+    overflow: auto;
+}
+
+.message {
+    color: var(--text-color);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.my-masonry-grid {
+    display: flex;
+    width: auto;
+}
+
+.my-masonry-grid_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-clip: padding-box;
+}

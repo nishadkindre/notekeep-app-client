@@ -1,0 +1,52 @@
+.form {
+  position: relative;
+  width: 30rem;
+  margin: 30px auto;
+  background-color: var(--notes-bg);
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: var(--form-s);
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  background: var(--notes-bg);
+  color: var(--text-color);
+  resize: none;
+}
+
+.form button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: var(--icon-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: var(--add-btn-s);
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.err {
+  color: red;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 599px) {
+  .form {
+    width: 80%;
+  }
+}
