@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "https://notekeep-app-server.onrender.com/api/notes/";
+const apiUrl = process.env.API_URL;
+const baseURL = `${apiUrl}/api/notes/`;
 
 const getAllNotes = async (setNotes) => {
   try {

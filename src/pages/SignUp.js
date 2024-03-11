@@ -30,20 +30,17 @@ function SignUpForm() {
     setError,
   } = useForm();
   const [apiError, setApiError] = useState("");
-
+  const apiUrl = process.env.API_URL;
   const onSubmit = async (data) => {
     const { firstName, lastName, email, password } = data;
     const name = `${firstName} ${lastName}`;
 
     try {
-      const response = await axios.post(
-        "https://notekeep-app-server.onrender.com/api/auth/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${apiUrl}/api/auth/register`, {
+        name,
+        email,
+        password,
+      });
       localStorage.setItem("token", response.data.token);
       window.location.href = "/notes"; // Redirect to notes page
     } catch (error) {

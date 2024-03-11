@@ -30,17 +30,14 @@ const SignIn = React.memo(() => {
     formState: { errors },
     setError,
   } = useForm();
-
+  const apiUrl = process.env.API_URL;
   const onSubmit = useCallback(
     async (data) => {
       try {
-        const response = await axios.post(
-          "https://notekeep-app-server.onrender.com/api/auth/login",
-          {
-            email: data.email,
-            password: data.password,
-          }
-        );
+        const response = await axios.post(`${apiUrl}/api/auth/login`, {
+          email: data.email,
+          password: data.password,
+        });
         if (response.status === 200) {
           const newToken = response.data.token;
           localStorage.setItem("token", newToken);

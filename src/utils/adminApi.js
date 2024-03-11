@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "https://notekeep-app-server.onrender.com/api/admin/";
+const apiUrl = process.env.API_URL;
+const baseURL = `${apiUrl}/api/admin/`;
 
 const getUsers = async (setUsers) => {
   try {

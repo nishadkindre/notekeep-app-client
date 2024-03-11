@@ -31,20 +31,19 @@ const AdminSignIn = React.memo(() => {
     setError,
   } = useForm();
 
+  const apiUrl = process.env.API_URL;
+
   const onSubmit = useCallback(
     async (data) => {
       try {
-        const response = await axios.post(
-          "https://notekeep-app-server.onrender.com/api/admin/login",
-          {
-            email: data.email,
-            password: data.password,
-          }
-        );
+        const response = await axios.post(`${apiUrl}/api/admin/login`, {
+          email: data.email,
+          password: data.password,
+        });
         if (response.status === 200) {
           const adminToken = response.data.admin_token;
           localStorage.setItem("admin_token", adminToken);
-          window.location.href = "/admin/panel"; // Redirect to notes page
+          window.location.href = "/admin/panel";
         }
       } catch (error) {
         if (
@@ -69,7 +68,7 @@ const AdminSignIn = React.memo(() => {
         }
       }
     },
-    [setError]
+    [apiUrl, setError]
   );
 
   function Footer() {
