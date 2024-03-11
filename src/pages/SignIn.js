@@ -30,7 +30,9 @@ const SignIn = React.memo(() => {
     formState: { errors },
     setError,
   } = useForm();
-  const apiUrl = process.env.API_URL;
+
+  const apiUrl = process.env.REACT_APP_API_URL; // Accessing REACT_APP_API_URL from .env
+
   const onSubmit = useCallback(
     async (data) => {
       try {
@@ -66,7 +68,7 @@ const SignIn = React.memo(() => {
         }
       }
     },
-    [setError]
+    [apiUrl, setError]
   );
 
   function Footer() {

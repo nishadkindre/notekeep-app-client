@@ -30,7 +30,9 @@ function SignUpForm() {
     setError,
   } = useForm();
   const [apiError, setApiError] = useState("");
-  const apiUrl = process.env.API_URL;
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const onSubmit = async (data) => {
     const { firstName, lastName, email, password } = data;
     const name = `${firstName} ${lastName}`;
@@ -42,7 +44,8 @@ function SignUpForm() {
         password,
       });
       localStorage.setItem("token", response.data.token);
-      window.location.href = "/notes"; // Redirect to notes page
+      window.location.href = "/notes";
+      console.log(response.data.message);
     } catch (error) {
       if (
         error.response &&
@@ -219,7 +222,7 @@ function Footer() {
       paddingTop="30px"
     >
       {"Copyright © "}
-      <Link color="inherit" href="/signup">
+      <Link color="inherit" href="https://mui.com/">
         Note Keep
       </Link>{" "}
       {new Date().getFullYear()}
