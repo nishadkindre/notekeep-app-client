@@ -10,6 +10,10 @@ UI for the Note Keep App
 - **Admin Page**
 - **Logout**
 
+## Demo
+
+This application is deployed on Netlify. Please check it out 😄 [here](https://nishad-notekeep.netlify.app/).
+
 ## Tech Stack
 
 - React.js
