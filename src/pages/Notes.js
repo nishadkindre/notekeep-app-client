@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const NoteArea = React.lazy(() => import("../components/NotesContainer"));
 
-const App = () => {
+const Notes = () => {
   const [notes, setNotes] = useState([]);
   const [userName, setUserName] = useState("");
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
@@ -21,7 +21,7 @@ const App = () => {
       setUserName(name);
     };
     fetchData();
-  }, []);
+  });
 
   return (
     <div className="App" data-theme={isDark ? "dark" : "light"}>
@@ -47,4 +47,4 @@ const App = () => {
 const MemoizedHeader = React.memo(Header);
 const MemoizedCreateArea = React.memo(CreateArea);
 
-export default withAuth(App);
+export default withAuth(Notes);

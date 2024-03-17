@@ -8,11 +8,13 @@ import { toast } from "react-toastify";
 
 const Note = ({ item, id, setNotes }) => {
   const { register, handleSubmit } = useForm();
+
   const [showSave, setShowSave] = useState(false);
   const [editValue, setEditValue] = useState({
     title: "",
     content: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setEditValue(() => {
