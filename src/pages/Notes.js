@@ -21,7 +21,7 @@ const Notes = () => {
       setUserName(name);
     };
     fetchData();
-  });
+  }, [setNotes]);
 
   return (
     <div className="App" data-theme={isDark ? "dark" : "light"}>
