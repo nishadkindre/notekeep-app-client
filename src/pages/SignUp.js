@@ -45,7 +45,6 @@ function SignUpForm() {
       });
       localStorage.setItem("token", response.data.token);
       window.location.href = "/notes";
-      console.log(response.data.message);
     } catch (error) {
       if (
         error.response &&

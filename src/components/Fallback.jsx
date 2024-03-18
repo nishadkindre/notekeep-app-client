@@ -9,8 +9,6 @@ export default function Fallback({ isDark }) {
   const skeletonColor = isDark ? darkModeColor : lightModeColor;
   const skeletonArray = Array.from({ length: 10 });
 
-  console.log("Fallback");
-
   return (
     <Masonry
       breakpointCols={{

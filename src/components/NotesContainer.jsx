@@ -3,8 +3,6 @@ import Note from "./Note";
 import Masonry from "react-masonry-css";
 
 const NotesContainer = ({ notes, setNotes }) => {
-  console.log("NotesContainer");
-
   return (
     <Masonry
       breakpointCols={{

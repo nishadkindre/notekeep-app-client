@@ -21,7 +21,6 @@ const Notes = () => {
     };
     fetchData();
   }, [setNotes]);
-  console.log("NotesPage");
 
   return (
     <div className="App" data-theme={isDark ? "dark" : "light"}>
