@@ -12,6 +12,8 @@ const Header = ({ isDark, setIsDark, userName, notes }) => {
     localStorage.removeItem("token");
     window.location.href = "/"; // Redirect to notes page
   };
+  console.log("Header");
+
   return (
     <header>
       <h1>
@@ -50,4 +52,4 @@ const Header = ({ isDark, setIsDark, userName, notes }) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

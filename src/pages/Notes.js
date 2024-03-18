@@ -1,13 +1,12 @@
 import React, { useEffect, useState, Suspense } from "react";
-import "../styles/App.css";
 import useLocalStorage from "use-local-storage";
+import "../styles/App.css";
 import { getAllNotes } from "../utils/notesApi";
-import Header from "../components/Header";
-import CreateArea from "../components/NoteForm";
-import Variants from "../components/Fallback";
+import { Header, NoteForm, Fallback } from "../components";
 import withAuth from "../utils/withAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const NoteArea = React.lazy(() => import("../components/NotesContainer"));
 
 const Notes = () => {
@@ -22,21 +21,22 @@ const Notes = () => {
     };
     fetchData();
   }, [setNotes]);
+  console.log("NotesPage");
 
   return (
     <div className="App" data-theme={isDark ? "dark" : "light"}>
       <div>
         <ToastContainer position="top-center" />
-        <MemoizedHeader
+        <Header
           isDark={isDark}
           setIsDark={setIsDark}
           userName={userName}
           notes={notes}
         />
-        <MemoizedCreateArea setNotes={setNotes} />
+        <NoteForm setNotes={setNotes} />
         <div className="message">{!notes.length && "Add Some Notes ..."}</div>
         <Suspense
-          fallback={<Variants notesLength={notes.length} isDark={isDark} />}
+          fallback={<Fallback notesLength={notes?.length} isDark={isDark} />}
         >
           <NoteArea notes={notes} setNotes={setNotes} />
         </Suspense>
@@ -44,7 +44,5 @@ const Notes = () => {
     </div>
   );
 };
-const MemoizedHeader = React.memo(Header);
-const MemoizedCreateArea = React.memo(CreateArea);
 
 export default withAuth(Notes);

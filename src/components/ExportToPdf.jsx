@@ -39,6 +39,8 @@ const exportToPDF = (notes, userName) => {
 };
 
 const ExportToPDFButton = ({ notes, userName, styleClass }) => {
+  console.log("ExportToPdf");
+
   return (
     <div
       className={styleClass}

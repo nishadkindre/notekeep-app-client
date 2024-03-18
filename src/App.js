@@ -1,10 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Notes from "./pages/Notes";
-import Error from "./pages/Error";
-import AdminSignIn from "./pages/AdminSignIn";
-import AdminPanel from "./pages/AdminPanel";
+import { SignIn, SignUp, AdminSignIn, AdminPanel, Notes, Error } from "./pages";
 
 const RouterWithStore = () => (
   <Router>

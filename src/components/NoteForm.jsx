@@ -15,7 +15,7 @@ const NoteForm = ({ setNotes }) => {
   const onSubmit = (data) => {
     addNote(data, reset, setNotes);
   };
-
+  console.log("NoteForm");
   return (
     <div>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -39,4 +39,4 @@ const NoteForm = ({ setNotes }) => {
   );
 };
 
-export default NoteForm;
+export default React.memo(NoteForm);

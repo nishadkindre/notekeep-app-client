@@ -51,6 +51,7 @@ const Note = ({ item, id, setNotes }) => {
       autoClose: 1000,
     });
   };
+  console.log("Note");
 
   return (
     <div className={styles.note}>
