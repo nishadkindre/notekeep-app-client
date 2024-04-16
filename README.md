@@ -12,7 +12,7 @@ UI for the Note Keep App
 
 ## Demo
 
-This application is deployed on Netlify. Please check it out 😄 [here](https://nishad-notekeep.netlify.app/).
+This application is deployed on Vercel. Please check it out 😄 [Here](https://notekeepapp.vercel.app).
 
 ## Tech Stack
 
