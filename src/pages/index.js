@@ -1,8 +1,8 @@
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import AdminSignIn from "./AdminSignIn";
+import UserSignIn from "./UserSignIn";
+import UserSignUp from "./UserSignUp";
 import AdminPanel from "./AdminPanel";
-import Notes from "./Notes";
+import AdminSignIn from "./AdminSignIn";
+import UserNotes from "./UserNotes";
 import Error from "./Error";
 
-export { SignIn, SignUp, AdminSignIn, AdminPanel, Notes, Error };
+export { UserSignIn, UserSignUp, AdminSignIn, AdminPanel, UserNotes, Error };

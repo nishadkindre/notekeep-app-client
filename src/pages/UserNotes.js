@@ -9,17 +9,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const NoteArea = React.lazy(() => import("../components/NotesContainer"));
 
-const Notes = () => {
+const UserNotes = () => {
   const [notes, setNotes] = useState([]);
   const [userName, setUserName] = useState("");
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       const name = await getAllNotes(setNotes);
       setUserName(name);
-    };
-    fetchData();
+    })();
   }, [setNotes]);
 
   return (
@@ -44,4 +43,4 @@ const Notes = () => {
   );
 };
 
-export default withAuth(Notes);
+export default withAuth(UserNotes);

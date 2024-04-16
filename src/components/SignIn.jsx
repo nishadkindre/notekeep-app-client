@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -11,6 +11,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Footer from "./Footer";
 import axios from "axios";
 
 const theme = createTheme({
@@ -23,7 +24,16 @@ const theme = createTheme({
   },
 });
 
-const SignIn = React.memo(() => {
+const SignIn = ({
+  apiUrl,
+  tokenName,
+  redirectToPage,
+  failureMessage,
+  userAction,
+  link,
+  linkMessage,
+  footerLink,
+}) => {
   const {
     register,
     handleSubmit,
@@ -31,63 +41,40 @@ const SignIn = React.memo(() => {
     setError,
   } = useForm();
 
-  const apiUrl = process.env.REACT_APP_API_URL; // Accessing REACT_APP_API_URL from .env
-
-  const onSubmit = useCallback(
-    async (data) => {
-      try {
-        const response = await axios.post(`${apiUrl}/api/auth/login`, {
-          email: data.email,
-          password: data.password,
-        });
-        if (response.status === 200) {
-          const newToken = response.data.token;
-          localStorage.setItem("token", newToken);
-          window.location.href = "/notes"; // Redirect to notes page
-        }
-      } catch (error) {
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.status === 401
-        ) {
-          const errorMessage = error.response.data.message;
-          if (errorMessage === "* User not found") {
-            setError("email", {
-              type: "manual",
-              message: "* User not found",
-            });
-          } else if (errorMessage === "* Invalid credentials") {
-            setError("password", {
-              type: "manual",
-              message: "* Invalid credentials",
-            });
-          }
-        } else {
-          console.error("Login failed:", error);
-        }
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(apiUrl, {
+        email: data.email,
+        password: data.password,
+      });
+      if (response.status === 200) {
+        const newToken = response.data?.token || response.data?.admin_token;
+        localStorage.setItem(tokenName, newToken);
+        window.location.href = redirectToPage; // Redirect to respective page
       }
-    },
-    [apiUrl, setError]
-  );
-
-  function Footer() {
-    return (
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        align="center"
-        paddingTop="30px"
-      >
-        {"Copyright © "}
-        <Link color="inherit" href="/">
-          Note Keep
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.status === 401
+      ) {
+        const errorMessage = error.response?.data.message;
+        if (errorMessage === failureMessage) {
+          setError("email", {
+            type: "manual",
+            message: failureMessage,
+          });
+        } else if (errorMessage === "* Invalid credentials") {
+          setError("password", {
+            type: "manual",
+            message: "* Invalid credentials",
+          });
+        }
+      } else {
+        console.error("Login failed:", error);
+      }
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -141,7 +128,7 @@ const SignIn = React.memo(() => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h2" variant="h6">
-              Sign in
+              {userAction}
             </Typography>
             <Box
               component="form"
@@ -185,18 +172,18 @@ const SignIn = React.memo(() => {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link href={link} variant="body2">
+                    {linkMessage}
                   </Link>
                 </Grid>
               </Grid>
-              <Footer />
+              <Footer footerLink={footerLink} />
             </Box>
           </Box>
         </Grid>
       </Grid>
     </ThemeProvider>
   );
-});
+};
 
 export default SignIn;

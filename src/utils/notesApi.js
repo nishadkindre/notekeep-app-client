@@ -10,8 +10,8 @@ const getAllNotes = async (setNotes) => {
       const response = await axios.get(baseURL, {
         headers: { Authorization: token },
       });
-      setNotes(response.data.notes);
-      const name = response.data.userName;
+      setNotes(response.data?.notes);
+      const name = response.data?.userName;
       return name;
     }
   } catch (error) {

@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Footer from "../components/Footer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -22,7 +23,7 @@ const theme = createTheme({
   },
 });
 
-function SignUpForm() {
+function UserSignUp() {
   const {
     register,
     handleSubmit,
@@ -103,7 +104,7 @@ function SignUpForm() {
           />
         </Box>
       </Container>
-      <Footer />
+      <Footer footerLink="/signup" />
     </ThemeProvider>
   );
 }
@@ -212,22 +213,4 @@ function SignUpFormFields({ handleSubmit, register, errors }) {
   );
 }
 
-function Footer() {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      paddingTop="30px"
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Note Keep
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-export default SignUpForm;
+export default UserSignUp;
