@@ -2,16 +2,10 @@ import React from "react";
 import Error from "../pages/Error";
 
 const withAuth = (Component) => {
-  const AuthComponent = () => {
+  return function AuthComponent() {
     const token = localStorage.getItem("token");
-    if (token) {
-      return <Component />;
-    } else {
-      return <Error />;
-    }
+    return token ? <Component /> : <Error />;
   };
-
-  return AuthComponent;
 };
 
 export default withAuth;
